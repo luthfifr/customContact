@@ -17,6 +17,8 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var contactStore = CNContactStore()
     var userContact = [CNContact]()
     
+    var activityIndicator = UIActivityIndicatorView()
+    
     private func retrieveContacts() {
         let keys = [CNContactImageDataAvailableKey, CNContactImageDataKey, CNContactGivenNameKey, CNContactFamilyNameKey , CNContactPhoneNumbersKey, CNContactEmailAddressesKey] //CNContactFormatter.descriptorForRequiredKeys(for: .fullName)
         let request = CNContactFetchRequest(keysToFetch: keys  as [CNKeyDescriptor])
@@ -29,9 +31,20 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        stopActivityIndicator()
         self.tableView.reloadData()
         
         btn_addContact.isEnabled = userContact.isEmpty
+    }
+    
+    private func startActivityIndicator() {
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    private func stopActivityIndicator() {
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     override func viewDidLoad() {
@@ -40,6 +53,11 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         self.tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +84,7 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 alertDenied.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
                 self.present(alertDenied, animated: true, completion: nil)
             case .authorized:
+                startActivityIndicator()
                 retrieveContacts()
             case .notDetermined:
                 contactStore.requestAccess(for: .contacts, completionHandler: { status, error in
@@ -110,20 +129,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            guard let settingsUrl = URL(string: "App-Prefs:root=General") else {
-                return
-            }
-            
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
-            }
-        }
     }
     
 }
