@@ -42,7 +42,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="icon-phone"/>
                                                     <connections>
-                                                        <action selector="btn_call:" destination="w7K-FE-Puf" eventType="touchUpInside" id="yke-8Y-Lqg"/>
+                                                        <action selector="btn_call:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qt9-A9-Xsk"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxV-je-zWt">
@@ -50,7 +50,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="icon-sms"/>
                                                     <connections>
-                                                        <action selector="btn_sms:" destination="w7K-FE-Puf" eventType="touchUpInside" id="pVD-p7-KdN"/>
+                                                        <action selector="btn_sms:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2G4-eL-9dL"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cdu-k7-dOz">
@@ -58,25 +58,25 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="icon-email"/>
                                                     <connections>
-                                                        <action selector="btn_email:" destination="w7K-FE-Puf" eventType="touchUpInside" id="QCX-kO-iTv"/>
+                                                        <action selector="btn_email:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gTy-xN-Dbs"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y0s-yV-0rn">
-                                                    <rect key="frame" x="115" y="27" width="45" height="19"/>
+                                                    <rect key="frame" x="114" y="27" width="46" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr6-qZ-eFP">
-                                                    <rect key="frame" x="115" y="57" width="114" height="21"/>
+                                                    <rect key="frame" x="114" y="57" width="115" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54O-fM-ROq">
-                                                    <rect key="frame" x="115" y="90" width="172" height="21"/>
+                                                    <rect key="frame" x="114" y="90" width="172" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -121,6 +121,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ab2-hp-vCb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="7m4-Ol-iQR">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

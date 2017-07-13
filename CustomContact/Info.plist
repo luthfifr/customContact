@@ -47,5 +47,10 @@
 	</array>
     <key>NSContactsUsageDescription</key>
     <string>$(PRODUCT_NAME) contact use</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>tel</string>
+        <string>telprompt</string>
+    </array>
 </dict>
 </plist>

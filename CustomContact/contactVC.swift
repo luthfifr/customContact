@@ -50,7 +50,8 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -59,7 +60,11 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -114,8 +119,12 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.btn_sms.tag = indexPath.row
         cell.btn_email.tag = indexPath.row
         
+        
         if userContact[indexPath.row].imageDataAvailable {
             cell.image_pp.image = UIImage(data: userContact[indexPath.row].imageData!)
+            cell.image_pp.contentMode = .scaleAspectFill
+        } else {
+            cell.image_pp.image = UIImage(named: "default_pp")
             cell.image_pp.contentMode = .scaleAspectFill
         }
         
@@ -127,17 +136,25 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 cell.label_phnumber.text = phone.value.stringValue
                 cell.label_phnumber.sizeToFit()
             }
+            cell.btn_sms.isEnabled = true
+            cell.btn_sms.isHidden = false
+            cell.btn_call.isEnabled = true
+            cell.btn_call.isHidden = false
         } else {
             cell.label_phnumber.text = ""
+            cell.btn_sms.isEnabled = false
+            cell.btn_sms.isHidden = true
+            cell.btn_call.isEnabled = false
+            cell.btn_call.isHidden = true
         }
         
         if !userContact[indexPath.row].emailAddresses.isEmpty {
             for email in userContact[indexPath.row].emailAddresses {
                 cell.label_email.text = email.value as String
                 cell.label_name.sizeToFit()
-                cell.btn_email.isEnabled = true
-                cell.btn_email.isHidden = false
             }
+            cell.btn_email.isEnabled = true
+            cell.btn_email.isHidden = false
         } else {
             cell.label_email.text = ""
             cell.btn_email.isEnabled = false
@@ -147,5 +164,33 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let indexPath = tableView.indexPathForSelectedRow
+        
+        let currentCell = tableView.cellForRow(at: indexPath!) as! contactTVC
+        
+        print(currentCell.label_phnumber.text!)
+    }
+    
+    @IBAction func btn_call(_ sender: UIButton) {
+        print("\(sender.tag) call pressed")
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let currentCell = tableView.cellForRow(at: indexPath) as! contactTVC
+        if let phoneNumber = currentCell.label_phnumber.text {
+            if let url = URL(string: "telprompt:\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+    }
+    
+    @IBAction func btn_sms(_ sender: UIButton) {
+        print("\(sender.tag) sms pressed")
+    }
+    
+    @IBAction func btn_email(_ sender: UIButton) {
+        print("\(sender.tag) email pressed")
+    }
 }
 
