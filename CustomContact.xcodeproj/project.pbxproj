@@ -14,6 +14,8 @@
 		CF9B1DD81F136563000BEFED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9B1DD71F136563000BEFED /* Assets.xcassets */; };
 		CF9B1DDB1F136563000BEFED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9B1DD91F136563000BEFED /* LaunchScreen.storyboard */; };
 		CF9B1DE31F148A72000BEFED /* moreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B1DE21F148A72000BEFED /* moreVC.swift */; };
+		CF9B1DE81F1605D9000BEFED /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9B1DE71F1605D9000BEFED /* Default-568h@2x.png */; };
+		CF9B1DEA1F171959000BEFED /* contactTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9B1DE91F171959000BEFED /* contactTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		CF9B1DDA1F136563000BEFED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF9B1DDC1F136563000BEFED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF9B1DE21F148A72000BEFED /* moreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moreVC.swift; sourceTree = "<group>"; };
+		CF9B1DE71F1605D9000BEFED /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CF9B1DE91F171959000BEFED /* contactTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contactTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,7 @@
 		CF9B1DC11F136563000BEFED = {
 			isa = PBXGroup;
 			children = (
+				CF9B1DE71F1605D9000BEFED /* Default-568h@2x.png */,
 				CF9B1DCC1F136563000BEFED /* CustomContact */,
 				CF9B1DCB1F136563000BEFED /* Products */,
 			);
@@ -60,6 +65,7 @@
 			children = (
 				CF9B1DCD1F136563000BEFED /* AppDelegate.swift */,
 				CF9B1DCF1F136563000BEFED /* contactVC.swift */,
+				CF9B1DE91F171959000BEFED /* contactTVC.swift */,
 				CF9B1DE21F148A72000BEFED /* moreVC.swift */,
 				CF9B1DD11F136563000BEFED /* Main.storyboard */,
 				CF9B1DD71F136563000BEFED /* Assets.xcassets */,
@@ -131,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9B1DDB1F136563000BEFED /* LaunchScreen.storyboard in Resources */,
+				CF9B1DE81F1605D9000BEFED /* Default-568h@2x.png in Resources */,
 				CF9B1DD81F136563000BEFED /* Assets.xcassets in Resources */,
 				CF9B1DD31F136563000BEFED /* Main.storyboard in Resources */,
 			);
@@ -144,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF9B1DD01F136563000BEFED /* contactVC.swift in Sources */,
+				CF9B1DEA1F171959000BEFED /* contactTVC.swift in Sources */,
 				CF9B1DCE1F136563000BEFED /* AppDelegate.swift in Sources */,
 				CF9B1DD61F136563000BEFED /* CustomContact.xcdatamodeld in Sources */,
 				CF9B1DE31F148A72000BEFED /* moreVC.swift in Sources */,
