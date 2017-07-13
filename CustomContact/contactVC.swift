@@ -110,22 +110,38 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath as IndexPath) as! contactTVC
         
+        cell.btn_call.tag = indexPath.row
+        cell.btn_sms.tag = indexPath.row
+        cell.btn_email.tag = indexPath.row
+        
         if userContact[indexPath.row].imageDataAvailable {
             cell.image_pp.image = UIImage(data: userContact[indexPath.row].imageData!)
-            cell.image_pp.contentMode = .scaleAspectFit
+            cell.image_pp.contentMode = .scaleAspectFill
         }
         
         cell.label_name.text = userContact[indexPath.row].givenName + " " + userContact[indexPath.row].familyName
         cell.label_name.sizeToFit()
         
-        for phone in userContact[indexPath.row].phoneNumbers {
-            cell.label_phnumber.text = phone.value.stringValue
-            cell.label_phnumber.sizeToFit()
+        if !userContact[indexPath.row].phoneNumbers.isEmpty {
+            for phone in userContact[indexPath.row].phoneNumbers {
+                cell.label_phnumber.text = phone.value.stringValue
+                cell.label_phnumber.sizeToFit()
+            }
+        } else {
+            cell.label_phnumber.text = ""
         }
         
-        for email in userContact[indexPath.row].emailAddresses {
-            cell.label_email.text = email.value as String
-            cell.label_name.sizeToFit()
+        if !userContact[indexPath.row].emailAddresses.isEmpty {
+            for email in userContact[indexPath.row].emailAddresses {
+                cell.label_email.text = email.value as String
+                cell.label_name.sizeToFit()
+                cell.btn_email.isEnabled = true
+                cell.btn_email.isHidden = false
+            }
+        } else {
+            cell.label_email.text = ""
+            cell.btn_email.isEnabled = false
+            cell.btn_email.isHidden = true
         }
         
         return cell
