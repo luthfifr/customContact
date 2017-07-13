@@ -61,10 +61,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         view.addSubview(activityIndicator)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -174,8 +170,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func btn_call(_ sender: UIButton) {
-        print("\(sender.tag) call pressed")
-        
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let currentCell = tableView.cellForRow(at: indexPath) as! contactTVC
         if let phoneNumber = currentCell.label_phnumber.text {
