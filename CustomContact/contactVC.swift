@@ -67,7 +67,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 
     @IBAction func btn_addContact(_ sender: UIBarButtonItem) {
-        
         switch CNContactStore.authorizationStatus(for: .contacts) {
             case .denied, .restricted:
                 let alertDenied = UIAlertController (title: "Access Denied", message: "CustomContact app is not allowed to access your Contact app. Please go to Settings to grant it an access.", preferredStyle: UIAlertControllerStyle.alert)
@@ -96,8 +95,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     }
                 })
         }
-        
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -118,11 +115,10 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         if userContact[indexPath.row].imageDataAvailable {
             cell.image_pp.image = UIImage(data: userContact[indexPath.row].imageData!)
-            cell.image_pp.contentMode = .scaleAspectFill
         } else {
             cell.image_pp.image = UIImage(named: "default_pp")
-            cell.image_pp.contentMode = .scaleAspectFill
         }
+        cell.image_pp.contentMode = .scaleAspectFill
         
         cell.label_name.text = userContact[indexPath.row].givenName + " " + userContact[indexPath.row].familyName
         cell.label_name.sizeToFit()
@@ -160,15 +156,6 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let indexPath = tableView.indexPathForSelectedRow
-        
-        let currentCell = tableView.cellForRow(at: indexPath!) as! contactTVC
-        
-        print(currentCell.label_phnumber.text!)
-    }
-    
     @IBAction func btn_call(_ sender: UIButton) {
         let indexPath = IndexPath(row: sender.tag, section: 0)
         let currentCell = tableView.cellForRow(at: indexPath) as! contactTVC
@@ -180,11 +167,23 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     @IBAction func btn_sms(_ sender: UIButton) {
-        print("\(sender.tag) sms pressed")
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let currentCell = tableView.cellForRow(at: indexPath) as! contactTVC
+        if let phoneNumber = currentCell.label_phnumber.text {
+            if let url = URL(string: "sms:\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
     }
     
     @IBAction func btn_email(_ sender: UIButton) {
-        print("\(sender.tag) email pressed")
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let currentCell = tableView.cellForRow(at: indexPath) as! contactTVC
+        if let email = currentCell.label_email.text {
+            if let url = URL(string: "mailto:\(email)"), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
     }
 }
 
