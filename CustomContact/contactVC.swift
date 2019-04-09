@@ -57,7 +57,7 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
         view.addSubview(activityIndicator)
     }
     
@@ -69,8 +69,8 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func btn_addContact(_ sender: UIBarButtonItem) {
         switch CNContactStore.authorizationStatus(for: .contacts) {
             case .denied, .restricted:
-                let alertDenied = UIAlertController (title: "Access Denied", message: "CustomContact app is not allowed to access your Contact app. Please go to Settings to grant it an access.", preferredStyle: UIAlertControllerStyle.alert)
-                alertDenied.addAction(UIAlertAction(title: "Settings", style: UIAlertActionStyle.default,handler: { (action) in
+                let alertDenied = UIAlertController (title: "Access Denied", message: "CustomContact app is not allowed to access your Contact app. Please go to Settings to grant it an access.", preferredStyle: UIAlertController.Style.alert)
+                alertDenied.addAction(UIAlertAction(title: "Settings", style: UIAlertAction.Style.default,handler: { (action) in
                     guard let settingsUrl = URL(string: "App-Prefs:root=Privacy&path=CONTACTS") else {
                         return
                     }
@@ -81,7 +81,7 @@ class contactVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         })
                     }
                 }))
-                alertDenied.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive, handler: nil))
+                alertDenied.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
                 self.present(alertDenied, animated: true, completion: nil)
             case .authorized:
                 startActivityIndicator()
